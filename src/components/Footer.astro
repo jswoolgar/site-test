@@ -1,0 +1,29 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="container">
+		<p class="wordmark">Monomedia</p>
+		<p class="copyright">&copy; {year} Monomedia. All rights reserved.</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		border-top: 1px solid var(--border);
+		padding: 3em 0;
+		text-align: center;
+	}
+
+	.wordmark {
+		margin: 0 0 0.5em 0;
+		font-weight: 700;
+		color: var(--text);
+	}
+
+	.copyright {
+		margin: 0;
+		font-size: 0.85em;
+	}
+</style>

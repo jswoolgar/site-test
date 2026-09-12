@@ -1,0 +1,175 @@
+---
+const nav = [
+	{ href: "/", label: "Home" },
+	{ href: "/about", label: "About" },
+	{ href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+	<div class="container inner">
+		<a href="/" class="logo">Monomedia</a>
+
+		<nav class="nav-desktop">
+			<ul>
+				{nav.map((item) => (
+					<li>
+						<a
+							href={item.href}
+							aria-current={currentPath === item.href ? "page" : undefined}
+						>
+							{item.label}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+		<a href="/contact" class="btn btn-primary cta">Start a project</a>
+
+		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+			<span></span>
+			<span></span>
+		</button>
+	</div>
+
+	<nav class="nav-mobile" id="mobile-nav" hidden>
+		<ul>
+			{nav.map((item) => (
+				<li>
+					<a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+						{item.label}
+					</a>
+				</li>
+			))}
+			<li><a href="/contact">Start a project</a></li>
+		</ul>
+	</nav>
+</header>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+	const mobileNav = document.getElementById("mobile-nav");
+
+	toggle?.addEventListener("click", () => {
+		const isOpen = toggle.getAttribute("aria-expanded") === "true";
+		toggle.setAttribute("aria-expanded", String(!isOpen));
+		toggle.classList.toggle("is-open", !isOpen);
+		if (mobileNav) mobileNav.hidden = isOpen;
+	});
+</script>
+
+<style>
+	.site-header {
+		border-bottom: 1px solid var(--border);
+		position: relative;
+	}
+
+	.inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2em;
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
+	}
+
+	.logo {
+		font-weight: 700;
+		font-size: 1.15em;
+		letter-spacing: -0.01em;
+	}
+
+	.nav-desktop ul {
+		display: flex;
+		gap: 2em;
+	}
+
+	.nav-desktop a {
+		color: var(--text-muted);
+		font-size: 0.95em;
+		font-weight: 500;
+		transition: color 0.15s ease;
+	}
+
+	.nav-desktop a:hover,
+	.nav-desktop a[aria-current="page"] {
+		color: var(--text);
+	}
+
+	.cta {
+		padding: 0.65em 1.35em;
+		font-size: 0.85em;
+	}
+
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		width: 2.25em;
+		height: 2.25em;
+		background: transparent;
+		border: 1px solid var(--border-strong);
+		border-radius: 8px;
+		cursor: pointer;
+	}
+
+	.menu-toggle span {
+		display: block;
+		margin: 0 auto;
+		width: 1.1em;
+		height: 2px;
+		background: var(--text);
+		transition: transform 0.15s ease, opacity 0.15s ease;
+	}
+
+	.menu-toggle.is-open span:first-child {
+		transform: translateY(3.5px) rotate(45deg);
+	}
+
+	.menu-toggle.is-open span:last-child {
+		transform: translateY(-3.5px) rotate(-45deg);
+	}
+
+	.nav-mobile {
+		display: none;
+		border-top: 1px solid var(--border);
+		padding: 1em 0 1.5em 0;
+	}
+
+	.nav-mobile ul {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25em;
+		padding: 0 1.75em;
+	}
+
+	.nav-mobile a {
+		color: var(--text-muted);
+		font-size: 1.05em;
+		font-weight: 500;
+	}
+
+	.nav-mobile a[aria-current="page"] {
+		color: var(--text);
+	}
+
+	@media (max-width: 640px) {
+
+		.nav-desktop, .cta {
+			display: none;
+		}
+
+		.menu-toggle {
+			display: flex;
+		}
+
+		.nav-mobile:not([hidden]) {
+			display: block;
+		}
+
+	}
+</style>

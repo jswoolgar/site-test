@@ -1,0 +1,136 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+
+const services = [
+	{
+		icon: "\u{1F3A8}",
+		title: "Design",
+		description: "Web, feature, and product design that's built to get to work fast — and look good doing it.",
+	},
+	{
+		icon: "\u{1F4BB}",
+		title: "Development",
+		description: "WordPress builds, front-end engineering, and mobile work, shipped clean and built to last.",
+	},
+	{
+		icon: "\u{1F4DD}",
+		title: "Documentation",
+		description: "Technical docs, marketing copy, and knowledge bases that make your product easy to understand.",
+	},
+	{
+		icon: "\u{1F9ED}",
+		title: "Consulting",
+		description: "Strategy, analytics, and accessibility guidance to help you make the right call before you build.",
+	},
+	{
+		icon: "\u{1F6E0}️",
+		title: "Support",
+		description: "Training, maintenance, and technical support so your site keeps working long after launch.",
+	},
+	{
+		icon: "\u{1F50C}",
+		title: "Add-ons",
+		description: "Hosting, internationalization, and security — the extras that keep everything running smoothly.",
+	},
+];
+---
+
+<Layout title="Home">
+	<section class="hero">
+		<div class="container">
+			<span class="eyebrow">Web &amp; Dev Studio</span>
+			<h1>Faster is better.<br />Faster for everyone is better still.</h1>
+			<p class="lede">
+				We&rsquo;re Monomedia, and we make websites that get to work faster, look
+				better, and deliver the goods. For everyone.
+			</p>
+			<div class="actions">
+				<a href="/contact" class="btn btn-primary">Start a project</a>
+				<a href="#services" class="btn btn-secondary">Our services</a>
+			</div>
+		</div>
+	</section>
+
+	<section id="services">
+		<div class="container">
+			<div class="section-head center">
+				<span class="eyebrow alt">What We Do</span>
+				<h2>Everything your site needs, under one roof</h2>
+			</div>
+			<div class="grid grid-3">
+				{services.map((service) => (
+					<ServiceCard {...service} />
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-band">
+		<div class="container center">
+			<span class="eyebrow">Let&rsquo;s Talk</span>
+			<h2>Ready to get to work?</h2>
+			<p>
+				All it takes is a nudge on your part to get us into gear, and
+				we&rsquo;ll take it from there.
+			</p>
+			<a href="/contact" class="btn btn-primary">Get in touch</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.hero {
+		padding: 8em 0 6em 0;
+		text-align: center;
+	}
+
+	.hero h1 {
+		margin: 0.6em auto 0.5em auto;
+		max-width: 16em;
+		font-size: 2.75em;
+	}
+
+	.lede {
+		max-width: 34em;
+		margin: 0 auto 2em auto;
+		font-size: 1.1em;
+	}
+
+	.actions {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		flex-wrap: wrap;
+	}
+
+	.cta-band {
+		border-top: 1px solid var(--border);
+		text-align: center;
+	}
+
+	.cta-band .center {
+		max-width: 34em;
+	}
+
+	.cta-band h2 {
+		margin: 0.5em 0;
+		font-size: 2em;
+	}
+
+	.cta-band p {
+		margin-bottom: 1.5em;
+	}
+
+	@media (max-width: 640px) {
+
+		.hero {
+			padding: 5em 0 3em 0;
+		}
+
+		.hero h1 {
+			font-size: 2em;
+		}
+
+	}
+</style>

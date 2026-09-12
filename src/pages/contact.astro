@@ -1,0 +1,136 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contact">
+	<section class="intro">
+		<div class="container center">
+			<span class="eyebrow">Contact</span>
+			<h1>Let&rsquo;s get to work</h1>
+			<p class="lede">
+				New project, a quick question, or just want to say hello? We read
+				every message.
+			</p>
+		</div>
+	</section>
+
+	<section class="contact-body">
+		<div class="container split">
+			<form class="card">
+				<div class="field">
+					<label for="name">Full Name</label>
+					<input type="text" id="name" name="name" required />
+				</div>
+				<div class="field">
+					<label for="email">Work Email</label>
+					<input type="email" id="email" name="email" required />
+				</div>
+				<div class="field">
+					<label for="budget">Budget Range</label>
+					<select id="budget" name="budget">
+						<option value="">Select a range</option>
+						<option>Under $5k</option>
+						<option>$5k &ndash; $15k</option>
+						<option>$15k &ndash; $50k</option>
+						<option>$50k+</option>
+					</select>
+				</div>
+				<div class="field">
+					<label for="message">Tell Us About The Project</label>
+					<textarea id="message" name="message" rows="6" required></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Send message</button>
+			</form>
+
+			<div class="direct">
+				<h2>Prefer to reach out directly?</h2>
+				<dl>
+					<div>
+						<dt>Email</dt>
+						<dd><a href="mailto:hello@monomedia.co">hello@monomedia.co</a></dd>
+					</div>
+					<div>
+						<dt>Phone</dt>
+						<dd>(000) 000-0000</dd>
+					</div>
+					<div>
+						<dt>Address</dt>
+						<dd>Add your business address here</dd>
+					</div>
+				</dl>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.intro {
+		padding-top: 7em;
+		padding-bottom: 3em;
+	}
+
+	.intro h1 {
+		margin: 0.5em 0;
+		font-size: 2.5em;
+	}
+
+	.lede {
+		max-width: 30em;
+		margin: 0 auto;
+		font-size: 1.1em;
+	}
+
+	.contact-body {
+		border-top: 1px solid var(--border);
+		padding-top: 4em;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: 1.4fr 1fr;
+		gap: 3em;
+		align-items: start;
+	}
+
+	form button {
+		width: 100%;
+	}
+
+	.direct h2 {
+		font-size: 1.15em;
+		margin-bottom: 1.5em;
+	}
+
+	.direct dl {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+		margin: 0;
+	}
+
+	.direct dt {
+		font-size: 0.8em;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+		margin-bottom: 0.35em;
+	}
+
+	.direct dd {
+		margin: 0;
+		font-size: 1.05em;
+	}
+
+	.direct a {
+		color: var(--accent);
+	}
+
+	@media (max-width: 780px) {
+
+		.split {
+			grid-template-columns: 1fr;
+		}
+
+	}
+</style>

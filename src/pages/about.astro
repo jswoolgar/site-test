@@ -1,0 +1,141 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const principles = [
+	{
+		title: "We give it to you straight",
+		description: "Honest advice first — even when that means telling you to leave your site alone.",
+	},
+	{
+		title: "Faster, without cutting corners",
+		description: "Speed matters, but never at the expense of quality or accessibility.",
+	},
+	{
+		title: "Built for everyone",
+		description: "Usability and access are part of the plan from day one, not an afterthought.",
+	},
+	{
+		title: "Easy to work with",
+		description: "Clear communication, real advice, and a team that actually replies.",
+	},
+	{
+		title: "We stick around",
+		description: "Support and maintenance don't end at launch — we're here for the long run.",
+	},
+	{
+		title: "Small enough to care",
+		description: "Fewer clients, more attention: real relationships instead of ticket numbers.",
+	},
+];
+---
+
+<Layout title="About">
+	<section class="intro">
+		<div class="container center">
+			<span class="eyebrow">About</span>
+			<h1>We are Monomedia</h1>
+			<p class="lede">
+				A small team that makes websites (and the occasional intervention)
+				faster, better, and built for everyone.
+			</p>
+		</div>
+	</section>
+
+	<section class="story">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow alt">Our Story</span>
+				<h2>The first step is the hardest.</h2>
+			</div>
+			<div class="story-copy">
+				<p>
+					Call it a website, call it a project, call it a store &mdash; heck,
+					call it an intervention. Point is, if you have a problem with your
+					online (or mobile) presence, we&rsquo;re here to help. Like the sign
+					says, it&rsquo;s our business to make sure your website gets to work
+					faster for everyone, everywhere.
+				</p>
+				<p>
+					All it takes is a nudge on your part to get us into gear, and
+					we&rsquo;ll take it from there. We&rsquo;ll give you our best advice
+					about next steps, even if that advice is to leave your site alone,
+					or to contact a different firm or specialist.
+				</p>
+				<p>
+					Use the <a href="/contact">contact form</a>, or
+					<a href="mailto:hello@monomedia.co">drop us a note</a>, or
+					<a href="tel:+10000000000">pick up the phone</a> (meaning, yes,
+					it&rsquo;s fine to hit us up with a text).
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="principles">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow alt">How We Work</span>
+				<h2>Principles we live by</h2>
+			</div>
+			<div class="grid grid-3">
+				{principles.map((principle) => (
+					<div class="card">
+						<h3>{principle.title}</h3>
+						<p>{principle.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.intro {
+		padding-top: 7em;
+		padding-bottom: 4em;
+	}
+
+	.intro h1 {
+		margin: 0.5em 0;
+		font-size: 2.5em;
+	}
+
+	.lede {
+		max-width: 32em;
+		margin: 0 auto;
+		font-size: 1.1em;
+	}
+
+	.story {
+		border-top: 1px solid var(--border);
+	}
+
+	.story h2 {
+		max-width: 20em;
+	}
+
+	.story-copy {
+		max-width: 42em;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25em;
+	}
+
+	.story-copy a {
+		color: var(--accent);
+		text-decoration: underline;
+	}
+
+	.principles {
+		border-top: 1px solid var(--border);
+	}
+
+	.principles h3 {
+		font-size: 1.05em;
+		margin-bottom: 0.5em;
+	}
+
+	.principles p {
+		font-size: 0.95em;
+	}
+</style>
