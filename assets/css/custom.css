@@ -12,14 +12,31 @@ header.major {
 	text-align: center;
 }
 
-/* Center the hero subtext + button as a group */
+/* Center the hero subtext + buttons as a stacked, centered group */
 #banner > .inner .content {
+	-moz-flex-direction: column;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
 	-moz-justify-content: center;
 	-webkit-justify-content: center;
 	-ms-justify-content: center;
 	justify-content: center;
 	text-align: center;
 }
+
+	#banner > .inner .content p {
+		margin: 0 auto 1.5em auto;
+		max-width: 42em;
+	}
+
+	#banner > .inner .content ul.actions {
+		-moz-justify-content: center;
+		-webkit-justify-content: center;
+		-ms-justify-content: center;
+		justify-content: center;
+		margin-left: 0;
+	}
 
 /* Narrow, centered intro copy that sits under a centered heading */
 .intro {
@@ -31,4 +48,11 @@ header.major {
 /* Center each service's heading + tagline on the Services page */
 .row > [class*="col-"] {
 	text-align: center;
+}
+
+/* Make each service tile's tagline easier to read against the tile artwork */
+#one.tiles header.major > p {
+	font-size: 0.85em;
+	opacity: 0.95;
+	margin-top: 0.5em;
 }
