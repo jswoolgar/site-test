@@ -1,0 +1,34 @@
+/* Monomedia design adjustments (layered on top of the Forty base styles) */
+
+/* Center section headings and their underline, site-wide */
+header.major {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+/* Center the hero heading (banner overrides the heading to full width) */
+#banner > .inner header {
+	text-align: center;
+}
+
+/* Center the hero subtext + button as a group */
+#banner > .inner .content {
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+	text-align: center;
+}
+
+/* Narrow, centered intro copy that sits under a centered heading */
+.intro {
+	margin: 0 auto 2em auto;
+	max-width: 42em;
+	text-align: center;
+}
+
+/* Center each service's heading + tagline on the Services page */
+.row > [class*="col-"] {
+	text-align: center;
+}
