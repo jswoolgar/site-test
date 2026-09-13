@@ -3,12 +3,13 @@ interface Props {
 	icon: string;
 	title: string;
 	description: string;
+	tone: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-const { icon, title, description } = Astro.props;
+const { icon, title, description, tone } = Astro.props;
 ---
 
-<div class="card service-card">
+<div class={`card service-card tone-${tone}`}>
 	<span class="icon" aria-hidden="true">{icon}</span>
 	<h3>{title}</h3>
 	<p>{description}</p>
@@ -19,6 +20,14 @@ const { icon, title, description } = Astro.props;
 		display: flex;
 		flex-direction: column;
 		gap: 0.75em;
+		border: none;
+		color: #f2f2f3;
+		transition: background-color 0.15s ease;
+	}
+
+	.service-card p {
+		color: #f2f2f3;
+		opacity: 0.85;
 	}
 
 	.icon {
@@ -32,4 +41,23 @@ const { icon, title, description } = Astro.props;
 	p {
 		font-size: 0.95em;
 	}
+
+	/* Tile palette: a shared lightness/chroma band so no tile reads heavier than another */
+	.tone-1 { background: oklch(52% 0.08 240); }
+	.tone-1:hover { background: oklch(60% 0.10 240); }
+
+	.tone-2 { background: oklch(44% 0.05 200); }
+	.tone-2:hover { background: oklch(52% 0.07 200); }
+
+	.tone-3 { background: oklch(30% 0.03 260); }
+	.tone-3:hover { background: oklch(38% 0.04 260); }
+
+	.tone-4 { background: oklch(56% 0.09 20); }
+	.tone-4:hover { background: oklch(64% 0.11 20); }
+
+	.tone-5 { background: oklch(58% 0.10 90); }
+	.tone-5:hover { background: oklch(66% 0.12 90); }
+
+	.tone-6 { background: oklch(48% 0.06 300); }
+	.tone-6:hover { background: oklch(56% 0.08 300); }
 </style>
