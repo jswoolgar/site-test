@@ -71,6 +71,43 @@ const principles = [
 		</div>
 	</section>
 
+	<section class="ceo">
+		<div class="container ceo-grid">
+			<figure class="headshot">
+				<img
+					src="/images/richard-sullivan.jpg"
+					alt="Richard Sullivan, CEO of Monomedia (a very distinguished elephant)"
+					width="480"
+					height="480"
+				/>
+				<figcaption>The official headshot. Please don&rsquo;t ask.</figcaption>
+			</figure>
+			<div class="ceo-copy">
+				<span class="eyebrow alt">Leadership</span>
+				<h2>Meet Richard Sullivan</h2>
+				<p class="role">Chief Executive Officer</p>
+				<p>
+					Richard Sullivan founded Monomedia on one firm belief: websites
+					should be fast, and an elephant never forgets. That&rsquo;s why he
+					remembers every client, every deadline, and &mdash; to the dismay of
+					our design team &mdash; every typo anyone has ever made in a footer.
+				</p>
+				<p>
+					He&rsquo;s the elephant in every room, in the good way: the one who
+					finally says the quiet part out loud and then asks if anyone wants
+					lunch. Big-picture thinker, big-hearted boss, and, we say this with
+					love, big on personal space.
+				</p>
+				<p>
+					When he&rsquo;s not steering the company, Richard enjoys long walks,
+					large meals, and a good mud bath. Ask him the secret to site speed
+					and he&rsquo;ll tell you: never stop moving, and always keep plenty
+					of peanuts on hand.
+				</p>
+			</div>
+		</div>
+	</section>
+
 	<section class="principles">
 		<div class="container">
 			<div class="section-head">
@@ -124,6 +161,70 @@ const principles = [
 	.story-copy a {
 		color: var(--accent);
 		text-decoration: underline;
+	}
+
+	.ceo {
+		border-top: 1px solid var(--border);
+	}
+
+	.ceo-grid {
+		display: grid;
+		grid-template-columns: 1fr 1.6fr;
+		gap: 4em;
+		align-items: center;
+	}
+
+	.headshot {
+		margin: 0;
+	}
+
+	.headshot img {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		object-position: 62% 30%;
+		border-radius: var(--radius);
+	}
+
+	.headshot figcaption {
+		margin-top: 0.75em;
+		font-size: 0.85em;
+		color: var(--text-muted);
+		text-align: center;
+	}
+
+	.ceo-copy {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1em;
+	}
+
+	.ceo-copy h2 {
+		font-size: 2em;
+	}
+
+	.ceo-copy .role {
+		margin-top: -0.5em;
+		font-size: 0.8em;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	@media (max-width: 780px) {
+
+		.ceo-grid {
+			grid-template-columns: 1fr;
+			gap: 2em;
+		}
+
+		.headshot {
+			max-width: 18em;
+		}
+
 	}
 
 	.principles {
