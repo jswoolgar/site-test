@@ -39,7 +39,6 @@
 	--tone-4: oklch(56% 0.09 20);
 	--tone-5: oklch(58% 0.10 90);
 	--tone-6: oklch(48% 0.06 300);
-	--tone-7: oklch(48% 0.07 150);
 
 	--radius: 14px;
 	--container: 72rem;
@@ -281,44 +280,15 @@ section {
 	object-fit: cover;
 }
 
-/* Services grid: seven tiles laid out as 3 over 4 */
+/* Services grid: three tiles in a row, stacking on small screens */
 .grid-services {
-	grid-template-columns: repeat(12, 1fr);
-}
-
-.grid-services > :nth-child(-n + 3) {
-	grid-column: span 4;
-}
-
-.grid-services > :nth-child(n + 4) {
-	grid-column: span 3;
-}
-
-@media (max-width: 900px) {
-
-	.grid-services {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	.grid-services > :nth-child(-n + 3),
-	.grid-services > :nth-child(n + 4) {
-		grid-column: auto;
-	}
-
-	.grid-services > :last-child {
-		grid-column: 1 / -1;
-	}
-
+	grid-template-columns: repeat(3, 1fr);
 }
 
 @media (max-width: 640px) {
 
 	.grid-services {
 		grid-template-columns: 1fr;
-	}
-
-	.grid-services > :last-child {
-		grid-column: auto;
 	}
 
 }
