@@ -2,7 +2,7 @@ export interface Service {
 	id: string;
 	icon: string;
 	title: string;
-	tone: 1 | 2 | 3 | 4 | 5 | 6;
+	tone: 1 | 2 | 3 | 4 | 5 | 6 | 7;
 	tags: string[];
 	short: string;
 	long: string;
@@ -37,25 +37,37 @@ export const services: Service[] = [
 		imageAlt: "Code on a laptop screen",
 	},
 	{
-		id: "copywriting",
+		id: "writing",
 		icon: "\u{1F4DD}",
-		title: "Copywriting",
+		title: "Writing",
 		tone: 3,
-		tags: ["Technical", "Marketing", "Knowledge Base"],
+		tags: ["Technical", "Copywriting", "Knowledge Base"],
 		short:
-			"Technical docs, marketing copy, and knowledge bases. Words that explain things, so your support inbox can finally take a nap.",
-		long: "If it isn’t written down, it doesn’t exist. We write the technical docs your developers keep promising, the marketing copy that sounds like an actual human wrote it, and the knowledge bases that answer questions before they turn into support tickets.",
-		image: "/images/service-copywriting.jpg",
+			"Technical writing, copywriting, and knowledge bases. Words that explain things, so your support inbox can finally take a nap.",
+		long: "If it isn’t written down, it doesn’t exist. We write the technical docs your developers keep promising, the copy that sounds like an actual human wrote it, and the knowledge bases that answer questions before they turn into support tickets.",
+		image: "/images/service-writing.jpg",
 		imageAlt: "An open notebook and pen on a wooden desk",
+	},
+	{
+		id: "marketing",
+		icon: "\u{1F4E3}",
+		title: "Marketing",
+		tone: 7,
+		tags: ["Strategy", "Messaging", "Local Search"],
+		short:
+			"Strategy, messaging, and local search. We help the right people find you, then give them a reason to pick up the phone.",
+		long: "A great website nobody finds is just an expensive diary. We build the strategy, sharpen the messaging, and get you showing up when people nearby search for exactly what you do. Less shouting, more showing up where it counts.",
+		image: "/images/service-marketing.jpg",
+		imageAlt: "A yellow “We are open” sign hanging in a doorway",
 	},
 	{
 		id: "consulting",
 		icon: "\u{1F9ED}",
 		title: "Consulting",
 		tone: 4,
-		tags: ["Strategy", "Analytics", "Accessibility", "Local Search Marketing"],
+		tags: ["Strategy", "Analytics", "Accessibility"],
 		short:
-			"Strategy, analytics, accessibility, and local search marketing. We’ll tell you what’s working, what isn’t, and what to do about it. Kindly.",
+			"Strategy, analytics, and accessibility. We’ll tell you what’s working, what isn’t, and what to do about it. Kindly.",
 		long: "Not sure where to start, or whether to start at all? We’ll dig into your numbers, your audience, and your site, then give you our honest advice about next steps. Sometimes that advice is “leave it alone.” We’ll say so.",
 		image: "/images/service-consulting.jpg",
 		imageAlt: "Two colleagues planning with sticky notes on a whiteboard",
@@ -68,7 +80,7 @@ export const services: Service[] = [
 		tone: 5,
 		tags: ["Training", "Maintenance", "Technical"],
 		short:
-			"Training, maintenance, and technical help. We answer, we fix, and we only ask if you’ve tried turning it off and on again when it’s warranted.",
+			"Training, maintenance, and tech help. We answer, we fix, and we try very hard not to say “turn it off and on again.”",
 		long: "Launch day is the start of the relationship, not the goodbye. We train your team, keep everything updated and secure, and fix things when they break, ideally before you notice. Yes, we answer the phone.",
 		image: "/images/service-support.jpg",
 		imageAlt: "A friendly support specialist in a headset waving at a laptop",

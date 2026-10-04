@@ -3,7 +3,7 @@ interface Props {
 	icon: string;
 	title: string;
 	description: string;
-	tone: 1 | 2 | 3 | 4 | 5 | 6;
+	tone: 1 | 2 | 3 | 4 | 5 | 6 | 7;
 	href: string;
 }
 
@@ -61,4 +61,8 @@ const { icon, title, description, tone, href } = Astro.props;
 
 	.tone-6 { background: oklch(48% 0.06 300); }
 	.tone-6:hover { background: oklch(56% 0.08 300); }
+
+	/* Seventh tone (moss), kept in the same lightness/chroma band */
+	.tone-7 { background: oklch(48% 0.07 150); }
+	.tone-7:hover { background: oklch(56% 0.09 150); }
 </style>
