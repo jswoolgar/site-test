@@ -4,27 +4,27 @@ import Layout from "../layouts/Layout.astro";
 const principles = [
 	{
 		title: "We give it to you straight",
-		description: "Honest advice first — even when that means telling you to leave your site alone.",
+		description: "Honest advice first, even when it’s “please leave your site alone.” That one’s a freebie.",
 	},
 	{
 		title: "Faster, without cutting corners",
-		description: "Speed matters, but never at the expense of quality or accessibility.",
+		description: "Speed is the goal. Shortcuts are not. We’ve yet to meet a corner worth cutting.",
 	},
 	{
 		title: "Built for everyone",
-		description: "Usability and access are part of the plan from day one, not an afterthought.",
+		description: "Accessibility isn’t a bonus round. It’s in the plan from day one, right next to “make it pretty.”",
 	},
 	{
 		title: "Easy to work with",
-		description: "Clear communication, real advice, and a team that actually replies.",
+		description: "Clear updates, real answers, and a team that actually replies. Revolutionary, we know.",
 	},
 	{
 		title: "We stick around",
-		description: "Support and maintenance don't end at launch — we're here for the long run.",
+		description: "Launch day is the beginning, not the goodbye. We stay for the updates, the questions, and the occasional panic.",
 	},
 	{
 		title: "Small enough to care",
-		description: "Fewer clients, more attention: real relationships instead of ticket numbers.",
+		description: "Fewer clients, more attention. You get a name and a face, not a ticket number.",
 	},
 ];
 ---
@@ -42,7 +42,8 @@ const principles = [
 	</section>
 
 	<section class="story">
-		<div class="container">
+		<div class="container story-grid">
+			<div>
 			<div class="section-head">
 				<span class="eyebrow alt">Our Story</span>
 				<h2>The first step is the hardest.</h2>
@@ -68,6 +69,15 @@ const principles = [
 					it&rsquo;s fine to hit us up with a text).
 				</p>
 			</div>
+			</div>
+			<img
+				class="photo story-photo"
+				src="/images/about-team.jpg"
+				alt="A small team gathered around a laptop, smiling at something on the screen"
+				width="1400"
+				height="933"
+				loading="lazy"
+			/>
 		</div>
 	</section>
 
@@ -112,7 +122,7 @@ const principles = [
 		<div class="container">
 			<div class="section-head">
 				<span class="eyebrow alt">How We Work</span>
-				<h2>Principles we live by</h2>
+				<h2>Principles we live by (and occasionally laminate)</h2>
 			</div>
 			<div class="grid grid-3">
 				{principles.map((principle) => (
@@ -147,8 +157,33 @@ const principles = [
 		border-top: 1px solid var(--border);
 	}
 
+	.story-grid {
+		display: grid;
+		grid-template-columns: 1.3fr 1fr;
+		gap: 4em;
+		align-items: center;
+	}
+
+	.story-photo {
+		aspect-ratio: 4 / 5;
+		object-position: 50% 40%;
+	}
+
 	.story h2 {
 		max-width: 20em;
+	}
+
+	@media (max-width: 780px) {
+
+		.story-grid {
+			grid-template-columns: 1fr;
+			gap: 2.5em;
+		}
+
+		.story-photo {
+			aspect-ratio: 3 / 2;
+		}
+
 	}
 
 	.story-copy {

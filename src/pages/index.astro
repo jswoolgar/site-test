@@ -1,45 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ServiceCard from "../components/ServiceCard.astro";
-
-const services = [
-	{
-		icon: "\u{1F3A8}",
-		title: "Design",
-		description: "Web, feature, and product design that's built to get to work fast — and look good doing it.",
-		tone: 1,
-	},
-	{
-		icon: "\u{1F4BB}",
-		title: "Development",
-		description: "WordPress builds, front-end engineering, and mobile work, shipped clean and built to last.",
-		tone: 2,
-	},
-	{
-		icon: "\u{1F4DD}",
-		title: "Documentation",
-		description: "Technical docs, marketing copy, and knowledge bases that make your product easy to understand.",
-		tone: 3,
-	},
-	{
-		icon: "\u{1F9ED}",
-		title: "Consulting",
-		description: "Strategy, analytics, and accessibility guidance to help you make the right call before you build.",
-		tone: 4,
-	},
-	{
-		icon: "\u{1F6E0}️",
-		title: "Support",
-		description: "Training, maintenance, and technical support so your site keeps working long after launch.",
-		tone: 5,
-	},
-	{
-		icon: "\u{1F50C}",
-		title: "Add-ons",
-		description: "Hosting, internationalization, and security — the extras that keep everything running smoothly.",
-		tone: 6,
-	},
-];
+import { services } from "../data/services";
 ---
 
 <Layout title="Home">
@@ -62,12 +24,48 @@ const services = [
 		<div class="container">
 			<div class="section-head center">
 				<span class="eyebrow alt">What We Do</span>
-				<h2>Everything your site needs, under one roof</h2>
+				<h2>Everything your site needs, under one roof. We checked for leaks.</h2>
 			</div>
 			<div class="grid grid-3">
 				{services.map((service) => (
-					<ServiceCard {...service} />
+					<ServiceCard
+						icon={service.icon}
+						title={service.title}
+						description={service.short}
+						tone={service.tone}
+						href={`/services#${service.id}`}
+					/>
 				))}
+			</div>
+			<div class="more">
+				<a href="/services" class="btn btn-secondary">See all services</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="feature">
+		<div class="container feature-grid">
+			<img
+				class="photo"
+				src="/images/home-workspace.jpg"
+				alt="A laptop, a cup of coffee, and a potted plant on a wooden desk"
+				width="1400"
+				height="833"
+				loading="lazy"
+			/>
+			<div class="feature-copy">
+				<span class="eyebrow alt">Why Monomedia</span>
+				<h2>We like fast sites and friendly people.</h2>
+				<p>
+					Slow websites lose visitors. Slow agencies lose clients. We try very
+					hard to avoid both: quick to respond, quick to build, and quick to tell
+					you when something isn&rsquo;t worth doing.
+				</p>
+				<p>
+					No jargon, no mystery invoices, no disappearing acts. Just a small team
+					that picks up the phone and gets your site working faster, for everyone.
+				</p>
+				<a href="/about" class="btn btn-secondary">Meet the team</a>
 			</div>
 		</div>
 	</section>
@@ -110,22 +108,40 @@ const services = [
 		flex-wrap: wrap;
 	}
 
-	.cta-band {
-		border-top: 1px solid var(--border);
+	.more {
+		margin-top: 2.5em;
 		text-align: center;
 	}
 
-	.cta-band .center {
-		max-width: 34em;
+	.feature {
+		border-top: 1px solid var(--border);
 	}
 
-	.cta-band h2 {
-		margin: 0.5em 0;
+	.feature-grid {
+		display: grid;
+		grid-template-columns: 1.1fr 1fr;
+		gap: 4em;
+		align-items: center;
+	}
+
+	.feature-copy {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1em;
+	}
+
+	.feature-copy h2 {
 		font-size: 2em;
 	}
 
-	.cta-band p {
-		margin-bottom: 1.5em;
+	@media (max-width: 780px) {
+
+		.feature-grid {
+			grid-template-columns: 1fr;
+			gap: 2em;
+		}
+
 	}
 
 	@media (max-width: 640px) {

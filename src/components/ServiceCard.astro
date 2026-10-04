@@ -4,16 +4,17 @@ interface Props {
 	title: string;
 	description: string;
 	tone: 1 | 2 | 3 | 4 | 5 | 6;
+	href: string;
 }
 
-const { icon, title, description, tone } = Astro.props;
+const { icon, title, description, tone, href } = Astro.props;
 ---
 
-<div class={`card service-card tone-${tone}`}>
+<a href={href} class={`card service-card tone-${tone}`}>
 	<span class="icon" aria-hidden="true">{icon}</span>
 	<h3>{title}</h3>
 	<p>{description}</p>
-</div>
+</a>
 
 <style>
 	.service-card {

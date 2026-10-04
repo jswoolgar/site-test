@@ -32,6 +32,14 @@
 	--accent-800: #2c455d;
 	--accent-900: #1d2d3d;
 
+	/* Tile palette (base fills) */
+	--tone-1: oklch(52% 0.08 240);
+	--tone-2: oklch(44% 0.05 200);
+	--tone-3: oklch(30% 0.03 260);
+	--tone-4: oklch(56% 0.09 20);
+	--tone-5: oklch(58% 0.10 90);
+	--tone-6: oklch(48% 0.06 300);
+
 	--radius: 14px;
 	--container: 72rem;
 	--font-heading: "Barlow Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -64,6 +72,7 @@ h1, h2, h3, h4 {
 	font-family: var(--font-heading);
 	font-weight: 600;
 	letter-spacing: -0.01em;
+	text-wrap: balance;
 }
 
 p {
@@ -244,4 +253,29 @@ section {
 .field textarea:focus {
 	outline: none;
 	border-color: var(--accent);
+}
+
+.cta-band {
+	border-top: 1px solid var(--border);
+	text-align: center;
+}
+
+.cta-band .center {
+	max-width: 34em;
+}
+
+.cta-band h2 {
+	margin: 0.5em 0;
+	font-size: 2em;
+}
+
+.cta-band p {
+	margin-bottom: 1.5em;
+}
+
+.photo {
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius);
+	object-fit: cover;
 }

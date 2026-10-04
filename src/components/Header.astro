@@ -1,6 +1,14 @@
 ---
+import { services } from "../data/services";
+
+const serviceLinks = [
+	{ href: "/services", label: "All services", icon: "" },
+	...services.map((s) => ({ href: `/services#${s.id}`, label: s.title, icon: s.icon })),
+];
+
 const nav = [
 	{ href: "/", label: "Home" },
+	{ href: "/services", label: "Services", children: serviceLinks },
 	{ href: "/about", label: "About" },
 	{ href: "/contact", label: "Contact" },
 ];
@@ -18,13 +26,26 @@ const currentPath = Astro.url.pathname;
 		<nav class="nav-desktop">
 			<ul>
 				{nav.map((item) => (
-					<li>
+					<li class:list={{ "has-menu": item.children }}>
 						<a
 							href={item.href}
 							aria-current={currentPath === item.href ? "page" : undefined}
 						>
 							{item.label}
+							{item.children && <span class="chev" aria-hidden="true" />}
 						</a>
+						{item.children && (
+							<ul class="submenu">
+								{item.children.map((child) => (
+									<li>
+										<a href={child.href}>
+											{child.icon && <span class="sub-icon" aria-hidden="true">{child.icon}</span>}
+											{child.label}
+										</a>
+									</li>
+								))}
+							</ul>
+						)}
 					</li>
 				))}
 			</ul>
@@ -45,6 +66,15 @@ const currentPath = Astro.url.pathname;
 					<a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
 						{item.label}
 					</a>
+					{item.children && (
+						<ul class="sub">
+							{item.children.slice(1).map((child) => (
+								<li>
+									<a href={child.href}>{child.label}</a>
+								</li>
+							))}
+						</ul>
+					)}
 				</li>
 			))}
 			<li><a href="/contact">Start a project</a></li>
@@ -119,6 +149,68 @@ const currentPath = Astro.url.pathname;
 		color: var(--text);
 	}
 
+	.nav-desktop > ul {
+		align-items: center;
+	}
+
+	.nav-desktop > ul > li {
+		padding: 0.6em 0;
+	}
+
+	.has-menu {
+		position: relative;
+	}
+
+	.chev {
+		display: inline-block;
+		width: 0.4em;
+		height: 0.4em;
+		margin-left: 0.5em;
+		border-right: 1.5px solid currentColor;
+		border-bottom: 1.5px solid currentColor;
+		transform: rotate(45deg) translateY(-2px);
+	}
+
+	.nav-desktop .submenu {
+		display: none;
+		flex-direction: column;
+		gap: 0;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		min-width: 14em;
+		padding: 0.5em;
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		box-shadow: 0 12px 32px color-mix(in srgb, #1d1f20 14%, transparent);
+		z-index: 10;
+	}
+
+	.has-menu:hover > .submenu,
+	.has-menu:focus-within > .submenu {
+		display: flex;
+	}
+
+	.nav-desktop .submenu a {
+		display: flex;
+		align-items: center;
+		gap: 0.6em;
+		padding: 0.55em 0.85em;
+		border-radius: 8px;
+		white-space: nowrap;
+	}
+
+	.nav-desktop .submenu a:hover {
+		background: var(--bg-raised);
+		color: var(--text);
+	}
+
+	.sub-icon {
+		font-size: 1.1em;
+	}
+
 	.cta {
 		padding: 0.65em 1.35em;
 		font-size: 0.85em;
@@ -175,6 +267,15 @@ const currentPath = Astro.url.pathname;
 
 	.nav-mobile a[aria-current="page"] {
 		color: var(--text);
+	}
+
+	.nav-mobile .sub {
+		gap: 0.75em;
+		padding: 0.9em 0 0 1.1em;
+	}
+
+	.nav-mobile .sub a {
+		font-size: 0.95em;
 	}
 
 	@media (max-width: 640px) {

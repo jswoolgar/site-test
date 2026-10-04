@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { services } from "../data/services";
+---
+
+<Layout title="Services" description="Design, development, documentation, consulting, support, and add-ons from Monomedia.">
+	<section class="intro">
+		<div class="container center">
+			<span class="eyebrow">Services</span>
+			<h1>What we do (and do rather well)</h1>
+			<p class="lede">
+				Six services, one team, zero mystery invoices. Pick what you need or
+				take the whole menu.
+			</p>
+		</div>
+	</section>
+
+	{services.map((service, index) => (
+		<section id={service.id} class:list={["service", { reverse: index % 2 === 1 }]}>
+			<div class="container service-grid">
+				<img
+					class="photo"
+					src={service.image}
+					alt={service.imageAlt}
+					width="1400"
+					height="933"
+					loading="lazy"
+					style={service.imagePosition ? `object-position: ${service.imagePosition}` : undefined}
+				/>
+				<div class="service-copy">
+					<span class="icon" aria-hidden="true">{service.icon}</span>
+					<h2>{service.title}</h2>
+					<ul class="tags" style={`--tone: var(--tone-${service.tone})`}>
+						{service.tags.map((tag) => (
+							<li>{tag}</li>
+						))}
+					</ul>
+					<p>{service.long}</p>
+				</div>
+			</div>
+		</section>
+	))}
+
+	<section class="cta-band">
+		<div class="container center">
+			<span class="eyebrow">Not Sure Yet?</span>
+			<h2>Tell us what&rsquo;s bugging you.</h2>
+			<p>
+				We&rsquo;ll point you to the right service, or tell you honestly that you
+				don&rsquo;t need one. Either way, you&rsquo;ll get a straight answer.
+			</p>
+			<a href="/contact" class="btn btn-primary">Start a project</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.intro {
+		padding-top: 7em;
+		padding-bottom: 3em;
+	}
+
+	.intro h1 {
+		margin: 0.5em 0;
+		font-size: 2.5em;
+	}
+
+	.lede {
+		max-width: 32em;
+		margin: 0 auto;
+		font-size: 1.1em;
+	}
+
+	.service {
+		border-top: 1px solid var(--border);
+		padding: 4.5em 0;
+		scroll-margin-top: 1em;
+	}
+
+	.service-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4em;
+		align-items: center;
+	}
+
+	.service.reverse .photo {
+		order: 2;
+	}
+
+	.service .photo {
+		aspect-ratio: 3 / 2;
+	}
+
+	.service-copy {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.9em;
+	}
+
+	.icon {
+		font-size: 1.75em;
+		line-height: 1;
+	}
+
+	.service-copy h2 {
+		font-size: 2.1em;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+	}
+
+	.tags li {
+		padding: 0.3em 0.9em;
+		border-radius: 999px;
+		background: var(--tone);
+		color: #f2f2f3;
+		font-size: 0.75em;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 780px) {
+
+		.service {
+			padding: 3em 0;
+		}
+
+		.service-grid {
+			grid-template-columns: 1fr;
+			gap: 2em;
+		}
+
+		.service.reverse .photo {
+			order: 0;
+		}
+
+	}
+</style>
